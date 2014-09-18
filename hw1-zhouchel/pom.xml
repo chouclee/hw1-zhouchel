@@ -5,6 +5,12 @@
 	<groupId>edu.cmu.lti.11791.f14.hw1</groupId>
 	<artifactId>hw1-zhouchel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<scm>
+		<connection>scm:git:git@github.com:choulee/hw1-zhouchel.git
+		</connection>
+		<developerConnection>scm:git:git@github.com:chouclee/hw1-zhouchel.git
+		</developerConnection>
+	</scm>
 	<repositories>
 		<repository>
 			<id>oaqa</id>
