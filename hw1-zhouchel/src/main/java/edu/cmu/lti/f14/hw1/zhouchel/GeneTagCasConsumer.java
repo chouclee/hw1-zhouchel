@@ -14,14 +14,19 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceProcessException;
 
 public class GeneTagCasConsumer extends CasConsumer_ImplBase {
-  private final String filePath = "hw1-zhouchel.out";
+  
+  /**
+   * Name of configuration parameter that  be set to the path of output file(optional)
+   */
+  public static final String PARAM_OUTPUT = "OutputFile";
 
   private BufferedWriter writer;
 
   @Override
   public void initialize() {
     writer = null;
-    File file = new File(filePath);
+    String output = ((String)getConfigParameterValue(PARAM_OUTPUT)).trim();
+    File file = new File(output);
     try {
       writer = new BufferedWriter(new FileWriter(file, false));
     } catch (Exception e) {

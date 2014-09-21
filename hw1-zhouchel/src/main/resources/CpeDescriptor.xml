@@ -1,60 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cpeDescription xmlns="http://uima.apache.org/resourceSpecifier">
-	<collectionReader>
-		<collectionIterator>
-			<descriptor>
-				<import location="collectionReaderDescriptor.xml" />
-			</descriptor>
-		</collectionIterator>
-	</collectionReader>
-	<casProcessors casPoolSize="3" processingUnitThreadCount="1">
-		<casProcessor deployment="integrated" name="CpeDescriptor">
-			<descriptor>
-				<import location="aeDescriptor.xml" />
-			</descriptor>
-			<deploymentParameters />
-			<errorHandling>
-				<errorRateThreshold action="terminate" value="0/1000" />
-				<maxConsecutiveRestarts action="terminate"
-					value="30" />
-				<timeout max="100000" default="-1" />
-			</errorHandling>
-			<checkpoint batch="10000" time="1000ms" />
-			<configurationParameterSettings>
-				<nameValuePair>
-					<name>InputFile</name>
-					<value>
-						<string>/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.in
-						</string>
-					</value>
-				</nameValuePair>
-				<nameValuePair>
-					<name>OutputFile</name>
-					<value>
-						<string>/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/test.out
-						</string>
-					</value>
-				</nameValuePair>
-			</configurationParameterSettings>
-		</casProcessor>
-		<casProcessor deployment="integrated" name="CasConsumerDescriptor">
-			<descriptor>
-				<import location="casConsumerDescriptor.xml" />
-			</descriptor>
-			<deploymentParameters />
-			<errorHandling>
-				<errorRateThreshold action="terminate" value="0/1000" />
-				<maxConsecutiveRestarts action="terminate"
-					value="30" />
-				<timeout max="100000" default="-1" />
-			</errorHandling>
-			<checkpoint batch="10000" time="1000ms" />
-		</casProcessor>
-	</casProcessors>
-	<cpeConfig>
-		<numToProcess>-1</numToProcess>
-		<deployAs>immediate</deployAs>
-		<checkpoint batch="0" time="300000ms" />
-		<timerImpl />
-	</cpeConfig>
+    <collectionReader>
+        <collectionIterator>
+            <descriptor>
+                <include href="src/main/resources/collectionReaderDescriptor.xml"/>
+            </descriptor>
+            <configurationParameterSettings>
+                <nameValuePair>
+                    <name>InputFile</name>
+                    <value>
+                        <string>/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.in</string>
+                    </value>
+                </nameValuePair>
+            </configurationParameterSettings>
+        </collectionIterator>
+    </collectionReader>
+    <casProcessors casPoolSize="3" processingUnitThreadCount="1">
+        <casProcessor deployment="integrated" name="aeDescriptor">
+            <descriptor>
+                <include href="src/main/resources/aeDescriptor.xml"/>
+            </descriptor>
+            <deploymentParameters/>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="0/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000" default="-1"/>
+            </errorHandling>
+            <checkpoint batch="10000" time="1000ms"/>
+        </casProcessor>
+        <casProcessor deployment="integrated" name="casConsumerDescriptor">
+            <descriptor>
+                <include href="src/main/resources/casConsumerDescriptor.xml"/>
+            </descriptor>
+            <deploymentParameters/>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="0/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000" default="-1"/>
+            </errorHandling>
+            <checkpoint batch="10000" time="1000ms"/>
+            <configurationParameterSettings>
+                <nameValuePair>
+                    <name>OutputFile</name>
+                    <value>
+                        <string>/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/test.out</string>
+                    </value>
+                </nameValuePair>
+            </configurationParameterSettings>
+        </casProcessor>
+    </casProcessors>
+    <cpeConfig>
+        <numToProcess>-1</numToProcess>
+        <deployAs>immediate</deployAs>
+        <checkpoint batch="0" time="300000ms"/>
+        <timerImpl/>
+    </cpeConfig>
 </cpeDescription>

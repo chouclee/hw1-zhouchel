@@ -13,7 +13,7 @@
         <description>Path to input file</description>
         <type>String</type>
         <multiValued>false</multiValued>
-        <mandatory>false</mandatory>
+        <mandatory>true</mandatory>
       </configurationParameter>
     </configurationParameters>
     <configurationParameterSettings/>
