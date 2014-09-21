@@ -67,9 +67,10 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    CalcPreRecall statistic = new CalcPreRecall("/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.in",
+    CalcPreRecall statistic = new CalcPreRecall("/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.out",
             ((String)getConfigParameterValue(PARAM_OUTPUT)).trim());
     System.out.println("Precision: " + statistic.precision());
     System.out.println("Recall: " + statistic.recall());
+    System.out.println("F1 score: " + statistic.f1score());
   }
 }

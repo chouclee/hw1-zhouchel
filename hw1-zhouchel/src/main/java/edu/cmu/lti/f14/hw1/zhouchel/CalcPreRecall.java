@@ -63,4 +63,8 @@ public class CalcPreRecall {
     return (double)truePositive / goldNum;
   }
   
+  public double f1score() {
+    return 2*(double)truePositive / (predNum + goldNum);
+  }
+  
 }
