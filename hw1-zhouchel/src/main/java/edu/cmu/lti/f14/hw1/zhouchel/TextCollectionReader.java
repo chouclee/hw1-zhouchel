@@ -23,7 +23,8 @@ public class TextCollectionReader extends CollectionReader_ImplBase {
   @Override
   public void initialize() throws ResourceInitializationException {
     hasRead = false;
-    file = new File(((String)getConfigParameterValue(PARAM_INPUT)).trim());
+    String input = ((String)getConfigParameterValue(PARAM_INPUT)).trim();
+    file = new File(input);
    /* try {
       LineNumberReader lnr = new LineNumberReader(new FileReader(
               ((String)getConfigParameterValue(PARAM_INPUT)).trim()));
