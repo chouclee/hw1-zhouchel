@@ -23,8 +23,7 @@ public class TextCollectionReader extends CollectionReader_ImplBase {
   @Override
   public void initialize() throws ResourceInitializationException {
     hasRead = false;
-    String input = ((String)getConfigParameterValue(PARAM_INPUT)).trim();
-    file = new File(input);
+    file = new File(((String)getConfigParameterValue(PARAM_INPUT)).trim());
    /* try {
       LineNumberReader lnr = new LineNumberReader(new FileReader(
               ((String)getConfigParameterValue(PARAM_INPUT)).trim()));
@@ -43,7 +42,7 @@ public class TextCollectionReader extends CollectionReader_ImplBase {
     // TODO Auto-generated method stub
     JCas jcas;
     try {
-      // You can create a JCas object from a CAS object by calling 
+      // You can create a JCas object from a CAS object by calling
       // the getJCas() method on the CAS object. (By SDK)
       jcas = aCas.getJCas();
     } catch (CASException e) {
