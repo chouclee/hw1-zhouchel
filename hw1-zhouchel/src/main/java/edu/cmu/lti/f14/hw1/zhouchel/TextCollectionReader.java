@@ -12,6 +12,12 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.FileUtils;
 import org.apache.uima.util.Progress;
 
+/**
+ * This CollectionReader will read entire document into single CAS
+ * @author zhouchel
+ * 
+ * @see org.apache.uima.collection.CollectionReader_ImplBase#initialize()
+ */
 public class TextCollectionReader extends CollectionReader_ImplBase {
   /**
    * Name of configuration parameter that must be set to the path of input file.
@@ -38,11 +44,16 @@ public class TextCollectionReader extends CollectionReader_ImplBase {
   }
 
   @Override
+  /**
+   * getNext would be executed only once 
+   * 
+   * @see org.apache.uima.collection.CollectionReader#getNext(org.apache.uima.cas.CAS)
+   */
   public void getNext(CAS aCas) throws IOException, CollectionException {
     // TODO Auto-generated method stub
     JCas jcas;
     try {
-      // You can create a JCas object from a CAS object by calling
+      // Create a JCas object from a CAS object by calling
       // the getJCas() method on the CAS object. (By SDK)
       jcas = aCas.getJCas();
     } catch (CASException e) {
@@ -58,21 +69,30 @@ public class TextCollectionReader extends CollectionReader_ImplBase {
   }
 
   @Override
+  /**
+   * @see org.apache.uima.collection.base_cpm.BaseCollectionReader#close()
+   */
   public void close() throws IOException {
     // TODO Auto-generated method stub
 
   }
 
   @Override
+  /**
+   * @see org.apache.uima.collection.base_cpm.BaseCollectionReader#getProgress()
+   */
   public Progress[] getProgress() {
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
+  /**
+   * @see org.apache.uima.collection.base_cpm.BaseCollectionReader#hasNext()
+   */
   public boolean hasNext() throws IOException, CollectionException {
     // TODO Auto-generated method stub
-    //if (in != null && lineIdx < lineNum)
+    // if the input file has been processed return false
     if (file != null && !hasRead)
       return true;
     return false;

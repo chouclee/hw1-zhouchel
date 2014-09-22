@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.uima.resource.DataResource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
 
 /**
- * 
+ * This class implements the StringMapResource interface
+ * Store resource's key and value into a hashMap
  * 
  */
 public class StringMapResource_impl implements StringMapResource, SharedResourceObject {
@@ -30,8 +30,8 @@ public class StringMapResource_impl implements StringMapResource, SharedResource
       BufferedReader reader = new BufferedReader(new InputStreamReader(inStr));
       String line;
       while ((line = reader.readLine()) != null) {
-        // the first tab on each line separates key from value.
-        // Keys cannot contain whitespace.
+        // slit the string use regex expression
+        // all pairs follow "key=value" in resource file
         String[] splited = line.split("=");
         String key = splited[0];
         String val = splited[1];
