@@ -4,10 +4,10 @@
   <primitive>false</primitive>
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="TextAnnotator">
-      <import location="TextAnnotator.xml"/>
+      <import name="TextAnnotator"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="GeneAnnotator">
-      <import location="GeneAnnotator.xml"/>
+      <import name="GeneAnnotator"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>

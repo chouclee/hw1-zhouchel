@@ -12,7 +12,7 @@
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="typeSystemDescriptor.xml"/>
+        <import name="typeSystemDescriptor"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
@@ -30,5 +30,15 @@
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </analysisEngineMetaData>
-  <resourceManagerConfiguration/>
+  <resourceManagerConfiguration>
+    <externalResources>
+      <externalResource>
+        <name>model</name>
+        <description/>
+        <fileResourceSpecifier>
+          <fileUrl>file:ne-en-bio-genetag.HmmChunker</fileUrl>
+        </fileResourceSpecifier>
+      </externalResource>
+    </externalResources>
+  </resourceManagerConfiguration>
 </analysisEngineDescription>
