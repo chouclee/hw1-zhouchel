@@ -54,6 +54,8 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
       geneName = geneAnnotation.getGeneName();
       begin = geneAnnotation.getBegin();
       text = geneAnnotation.getText();
+      
+      //calculate whitespace-excluded offsets
       begin = begin - countWhiteSpaces(text.substring(0, begin));
       end = begin + geneName.length() - countWhiteSpaces(geneName) - 1;
       try {
