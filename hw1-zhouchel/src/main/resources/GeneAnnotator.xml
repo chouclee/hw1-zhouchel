@@ -30,15 +30,30 @@
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </analysisEngineMetaData>
+  <externalResourceDependencies>
+    <externalResourceDependency>
+      <key>paramConfig</key>
+      <description/>
+      <interfaceName>edu.cmu.lti.f14.hw1.zhouchel.StringMapResource</interfaceName>
+      <optional>false</optional>
+    </externalResourceDependency>
+  </externalResourceDependencies>
   <resourceManagerConfiguration>
     <externalResources>
       <externalResource>
-        <name>model</name>
+        <name>config</name>
         <description/>
         <fileResourceSpecifier>
-          <fileUrl>file:ne-en-bio-genetag.HmmChunker</fileUrl>
+          <fileUrl>file:paramConfig</fileUrl>
         </fileResourceSpecifier>
+        <implementationName>edu.cmu.lti.f14.hw1.zhouchel.StringMapResource_impl</implementationName>
       </externalResource>
     </externalResources>
+    <externalResourceBindings>
+      <externalResourceBinding>
+        <key>paramConfig</key>
+        <resourceName>config</resourceName>
+      </externalResourceBinding>
+    </externalResourceBindings>
   </resourceManagerConfiguration>
 </analysisEngineDescription>

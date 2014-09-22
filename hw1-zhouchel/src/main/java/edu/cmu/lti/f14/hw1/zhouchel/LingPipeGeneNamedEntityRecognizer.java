@@ -8,6 +8,7 @@ import com.aliasi.chunk.ConfidenceChunker;
 import com.aliasi.util.AbstractExternalizable;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,9 +21,13 @@ public class LingPipeGeneNamedEntityRecognizer {
   private int MAX_N_BEST_CHUNKS;
   
   private double threshold;
+  
+  private ClassLoader loader = LingPipeGeneNamedEntityRecognizer.class.getClassLoader();
 
   public LingPipeGeneNamedEntityRecognizer(String modelFile) throws ResourceInitializationException {
-    File model = new File(modelFile);
+    
+    URL modelURL = loader.getResource(modelFile);
+    File model = new File(modelURL.getPath());
     System.out.println("Reading chunker from file=" + model);
     try {
       chunker = (Chunker) AbstractExternalizable.readObject(model);
@@ -38,7 +43,8 @@ public class LingPipeGeneNamedEntityRecognizer {
 
   public LingPipeGeneNamedEntityRecognizer(String modelFile, int MAX_N_BEST_CHUNKS, double threshold)
           throws ResourceInitializationException {
-    File model = new File(modelFile);
+    URL modelURL = loader.getResource(modelFile);
+    File model = new File(modelURL.getPath());
     System.out.println("Reading chunker from file=" + model);
     try {
       cfdchunker = (ConfidenceChunker) AbstractExternalizable.readObject(model);
