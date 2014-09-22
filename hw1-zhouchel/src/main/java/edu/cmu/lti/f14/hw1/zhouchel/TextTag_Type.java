@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** extract sentence from input file
- * Updated by JCasGen Sat Sep 20 03:06:01 EDT 2014
+ * Updated by JCasGen Sun Sep 21 21:11:57 EDT 2014
  * @generated */
 public class TextTag_Type extends Annotation_Type {
   /** @generated */

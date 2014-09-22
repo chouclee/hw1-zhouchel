@@ -45,7 +45,7 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
     } catch (CASException e) {
       throw new ResourceProcessException(e);
     }
-    String id, geneName;
+    String id, geneName, text;
     int begin, end;
     FSIterator<Annotation> iter = jcas.getAnnotationIndex(GeneTag.type).iterator();
     while (iter.hasNext()) {
@@ -53,7 +53,9 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
       id = geneAnnotation.getId();
       geneName = geneAnnotation.getGeneName();
       begin = geneAnnotation.getBegin();
-      end = geneAnnotation.getEnd();
+      text = geneAnnotation.getText();
+      begin = begin - countWhiteSpaces(text.substring(0, begin));
+      end = begin + geneName.length() - countWhiteSpaces(geneName) - 1;
       try {
         writer.write(id + "|" + begin + " " + end + "|" + geneName + "\n");
       } catch (IOException e) {
@@ -72,5 +74,15 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
     System.out.println("Precision: " + statistic.precision());
     System.out.println("Recall: " + statistic.recall());
     System.out.println("F1 score: " + statistic.f1score());
+  }
+  
+
+  private int countWhiteSpaces(String str) {
+    int cnt = 0;
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == ' ')
+        cnt++;
+    }
+    return cnt;
   }
 }

@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sat Sep 20 03:06:01 EDT 2014
+ * Updated by JCasGen Sun Sep 21 21:11:57 EDT 2014
  * @generated */
 public class GeneTag_Type extends Annotation_Type {
   /** @generated */
@@ -79,6 +79,24 @@ public class GeneTag_Type extends Annotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_geneName, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_text;
+  /** @generated */
+  final int     casFeatCode_text;
+  /** @generated */ 
+  public String getText(int addr) {
+        if (featOkTst && casFeat_text == null)
+      jcas.throwFeatMissing("text", "edu.cmu.lti.f14.hw1.zhouchel.GeneTag");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_text);
+  }
+  /** @generated */    
+  public void setText(int addr, String v) {
+        if (featOkTst && casFeat_text == null)
+      jcas.throwFeatMissing("text", "edu.cmu.lti.f14.hw1.zhouchel.GeneTag");
+    ll_cas.ll_setStringValue(addr, casFeatCode_text, v);}
+    
+  
 
 
 
@@ -95,6 +113,10 @@ public class GeneTag_Type extends Annotation_Type {
  
     casFeat_geneName = jcas.getRequiredFeatureDE(casType, "geneName", "uima.cas.String", featOkTst);
     casFeatCode_geneName  = (null == casFeat_geneName) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_geneName).getCode();
+
+ 
+    casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);
+    casFeatCode_text  = (null == casFeat_text) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_text).getCode();
 
   }
 }

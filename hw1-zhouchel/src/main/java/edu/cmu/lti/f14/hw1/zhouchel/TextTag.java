@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** extract sentence from input file
- * Updated by JCasGen Sat Sep 20 03:06:01 EDT 2014
- * XML source: /home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/TextAnnotator.xml
+ * Updated by JCasGen Sun Sep 21 21:11:57 EDT 2014
+ * XML source: /home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/typeSystemDescriptor.xml
  * @generated */
 public class TextTag extends Annotation {
   /** @generated

@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Sep 20 03:06:01 EDT 2014
- * XML source: /home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/TextAnnotator.xml
+ * Updated by JCasGen Sun Sep 21 21:11:57 EDT 2014
+ * XML source: /home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/typeSystemDescriptor.xml
  * @generated */
 public class GeneTag extends Annotation {
   /** @generated
@@ -96,6 +96,24 @@ public class GeneTag extends Annotation {
     if (GeneTag_Type.featOkTst && ((GeneTag_Type)jcasType).casFeat_geneName == null)
       jcasType.jcas.throwFeatMissing("geneName", "edu.cmu.lti.f14.hw1.zhouchel.GeneTag");
     jcasType.ll_cas.ll_setStringValue(addr, ((GeneTag_Type)jcasType).casFeatCode_geneName, v);}    
+   
+    
+  //*--------------*
+  //* Feature: text
+
+  /** getter for text - gets 
+   * @generated */
+  public String getText() {
+    if (GeneTag_Type.featOkTst && ((GeneTag_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "edu.cmu.lti.f14.hw1.zhouchel.GeneTag");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((GeneTag_Type)jcasType).casFeatCode_text);}
+    
+  /** setter for text - sets  
+   * @generated */
+  public void setText(String v) {
+    if (GeneTag_Type.featOkTst && ((GeneTag_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "edu.cmu.lti.f14.hw1.zhouchel.GeneTag");
+    jcasType.ll_cas.ll_setStringValue(addr, ((GeneTag_Type)jcasType).casFeatCode_text, v);}    
   }
 
     
