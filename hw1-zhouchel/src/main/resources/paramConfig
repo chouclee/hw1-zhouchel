@@ -1,0 +1,3 @@
+model=ne-en-bio-genetag.HmmChunker
+MAX_N_BEST_CHUNKS=15
+threshold=0.65
