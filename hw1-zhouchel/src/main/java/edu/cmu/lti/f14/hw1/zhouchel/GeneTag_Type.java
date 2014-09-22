@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Sat Sep 20 03:06:01 EDT 2014 */
+/* First created by JCasGen Mon Sep 22 01:22:41 EDT 2014 */
 package edu.cmu.lti.f14.hw1.zhouchel;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Sep 21 21:11:57 EDT 2014
+ * Updated by JCasGen Mon Sep 22 01:22:41 EDT 2014
  * @generated */
 public class GeneTag_Type extends Annotation_Type {
   /** @generated */

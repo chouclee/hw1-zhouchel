@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sat Sep 20 03:06:01 EDT 2014 */
+/* First created by JCasGen Mon Sep 22 01:22:41 EDT 2014 */
 package edu.cmu.lti.f14.hw1.zhouchel;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Sep 21 21:11:57 EDT 2014
+ * Updated by JCasGen Mon Sep 22 01:22:41 EDT 2014
  * XML source: /home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/typeSystemDescriptor.xml
  * @generated */
 public class GeneTag extends Annotation {
