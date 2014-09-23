@@ -1,7 +1,6 @@
 package edu.cmu.lti.f14.hw1.zhouchel;
 
 import java.io.BufferedWriter;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,7 +17,7 @@ import org.apache.uima.resource.ResourceProcessException;
  * GeneTag CAS Consumer that writes all extracted Gene Mention results into a text. 
  * This CAS Consumer takes one parameter:
  * <ul>
- * <li><code>OutputFile</code> - path to which output files will be written</li>
+ * <li><code>OutputFile</code> - path to which output file will be written</li>
  * </ul>
  *
  * @author zhouchel
@@ -35,7 +34,9 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
 
   @Override
   /**
-   * Open output file
+   * This method performs one-time startup logic, that is to say, opening output file,
+   * which is called during initialization.
+   * 
    * @see org.apache.uima.collection.CasConsumer_ImplBase#initialize()
    */
   public void initialize() {
@@ -54,7 +55,7 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
    * Processes the CasContainer which was populated by the TextAnalysisEngines. <br>
    * In this case, the Gene annotation was extracted first. Begin and end positions<br>
    * were updated with calculated whitespace-excluded offsets. Sentence ID, gene name,<br>
-   * begin and end positions were written into the output file .
+   * begin and end positions were written into output file .
    * 
    * @param aCAS
    *          CasContainer which has been populated by the TAEs
@@ -93,24 +94,32 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
         throw new ResourceProcessException(e);
       }
     }
-
-    try {
-      writer.close();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    // Evaluate the final results. Calculate precision and recall
-    CalcPreRecall statistic = new CalcPreRecall("/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.out",
-            ((String)getConfigParameterValue(PARAM_OUTPUT)).trim());
-    System.out.println("Precision: " + statistic.precision());
-    System.out.println("Recall: " + statistic.recall());
-    System.out.println("F1 score: " + statistic.f1score());
   }
   
-  // *************Helper Function*************//
-  // Count white spaces in a string
-  // return the count number
+  @Override
+  /**
+   * Releases all resources and calculates predicted precision and recall
+   * 
+   * @see org.apache.uima.collection.CasConsumer_ImplBase#destory()
+   */
+  public void destroy() {
+     try {
+       writer.close();
+     } catch (IOException e) {
+       e.printStackTrace();
+     }
+     // Evaluate the final results. Calculate precision and recall
+     CalcPreRecall statistic = new CalcPreRecall("/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.out",
+             ((String)getConfigParameterValue(PARAM_OUTPUT)).trim());
+     System.out.println("Precision: " + statistic.precision());
+     System.out.println("Recall: " + statistic.recall());
+     System.out.println("F1 score: " + statistic.f1score());
+  }
+  
+  /*************Helper Function************
+   * Count white spaces in a string
+   * return the count number
+   ****************************************/
   private int countWhiteSpaces(String str) {
     int cnt = 0;
     for (int i = 0; i < str.length(); i++) {

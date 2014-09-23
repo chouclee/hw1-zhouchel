@@ -16,9 +16,9 @@
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
-        <casProcessor deployment="integrated" name="aeDescriptor">
+        <casProcessor deployment="integrated" name="GeneAnnotator">
             <descriptor>
-                <include href="src/main/resources/aeDescriptor.xml"/>
+                <include href="src/main/resources/GeneAnnotator.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>
@@ -43,7 +43,7 @@
                 <nameValuePair>
                     <name>OutputFile</name>
                     <value>
-                        <string>/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/test.out</string>
+                        <string>/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/data.out</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>
