@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -19,18 +20,20 @@ import org.apache.uima.resource.ResourceProcessException;
  * <ul>
  * <li><code>OutputFile</code> - path to which output file will be written</li>
  * </ul>
- *
+ * 
  * @author zhouchel
- *
+ * 
  */
 public class GeneTagCasConsumer extends CasConsumer_ImplBase {
-  
+
   /**
-   * Name of configuration parameter that  be set to the path of output file(optional)
+   * Name of configuration parameter that be set to the path of output file(optional)
    */
   public static final String PARAM_OUTPUT = "OutputFile";
 
   private BufferedWriter writer;
+
+  private ClassLoader loader = LingPipeGeneNamedEntityRecognizer.class.getClassLoader();
 
   @Override
   /**
@@ -41,7 +44,7 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
    */
   public void initialize() {
     writer = null;
-    String output = ((String)getConfigParameterValue(PARAM_OUTPUT)).trim();
+    String output = ((String) getConfigParameterValue(PARAM_OUTPUT)).trim();
     File file = new File(output);
     try {
       writer = new BufferedWriter(new FileWriter(file, false));
@@ -80,12 +83,12 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
     FSIterator<Annotation> iter = jcas.getAnnotationIndex(GeneTag.type).iterator();
     while (iter.hasNext()) {
       GeneTag geneAnnotation = (GeneTag) iter.next();// get GeneTag annotation
-      id = geneAnnotation.getId();                   // get sentence ID
-      geneName = geneAnnotation.getGeneName();       // get Gene name
-      begin = geneAnnotation.getBegin();             // begin position of gene name
-      text = geneAnnotation.getText();               // original sentence text
-      
-      //calculate whitespace-excluded offsets
+      id = geneAnnotation.getId(); // get sentence ID
+      geneName = geneAnnotation.getGeneName(); // get Gene name
+      begin = geneAnnotation.getBegin(); // begin position of gene name
+      text = geneAnnotation.getText(); // original sentence text
+
+      // calculate whitespace-excluded offsets
       begin = begin - countWhiteSpaces(text.substring(0, begin));
       end = begin + geneName.length() - countWhiteSpaces(geneName) - 1;
       try {
@@ -95,7 +98,7 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
       }
     }
   }
-  
+
   @Override
   /**
    * Releases all resources and calculates predicted precision and recall
@@ -103,22 +106,38 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
    * @see org.apache.uima.collection.CasConsumer_ImplBase#destory()
    */
   public void destroy() {
-     try {
-       writer.close();
-     } catch (IOException e) {
-       e.printStackTrace();
-     }
-     // Evaluate the final results. Calculate precision and recall
-     CalcPreRecall statistic = new CalcPreRecall("/home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/data/sample.out",
-             ((String)getConfigParameterValue(PARAM_OUTPUT)).trim());
-     System.out.println("Precision: " + statistic.precision());
-     System.out.println("Recall: " + statistic.recall());
-     System.out.println("F1 score: " + statistic.f1score());
+    try {
+      writer.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    if (GeneAnnotatorWithLingPipe.mMap.get("Evaluation").equalsIgnoreCase("true")) {
+      String standard;
+      try {
+        standard = GeneAnnotatorWithLingPipe.mMap.get("Gold_Standard");
+        if (standard == null)
+          throw new ResourceProcessException();
+        
+        URL modelURL = loader.getResource(standard); // get standard output filename
+        
+        String standardOutput = modelURL.getPath();   // get file path to standard output
+          
+        // Evaluate the final results. Calculate precision and recall
+        
+        CalcPreRecall statistic = new CalcPreRecall(standardOutput,
+                ((String) getConfigParameterValue(PARAM_OUTPUT)).trim());
+        System.out.println("Precision: " + statistic.precision());
+        System.out.println("Recall: " + statistic.recall());
+        System.out.println("F1 score: " + statistic.f1score());
+        
+      } catch (ResourceProcessException e) {
+        e.printStackTrace();
+      }
+    }
   }
-  
-  /*************Helper Function************
-   * Count white spaces in a string
-   * return the count number
+
+  /*************
+   * Helper Function************ Count white spaces in a string return the count number
    ****************************************/
   private int countWhiteSpaces(String str) {
     int cnt = 0;

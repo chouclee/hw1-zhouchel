@@ -18,7 +18,7 @@ import com.aliasi.chunk.Chunk;
  */
 public class GeneAnnotatorWithLingPipe extends JCasAnnotator_ImplBase {
   /** Map from paramConfig */
-  private StringMapResource mMap;
+  public static StringMapResource mMap;
 
   private LingPipeGeneNamedEntityRecognizer ner;
 
@@ -41,15 +41,21 @@ public class GeneAnnotatorWithLingPipe extends JCasAnnotator_ImplBase {
 
       // get the file name of selected model
       String model = mMap.get("model");
+      
+      String useNBest = mMap.get("N-Best_NER");
+      if (useNBest.equalsIgnoreCase("true")) {
+        // get parameter for MAX_N_BEST_CHUNKS
+        int MAX_N_BEST_CHUNKS = Integer.parseInt(mMap.get("MAX_N_BEST_CHUNKS"));
 
-      // get parameter for MAX_N_BEST_CHUNKS
-      int MAX_N_BEST_CHUNKS = Integer.parseInt(mMap.get("MAX_N_BEST_CHUNKS"));
+        // get parameter for threshold
+        double threshold = Double.parseDouble(mMap.get("threshold"));
 
-      // get parameter for threshold
-      double threshold = Double.parseDouble(mMap.get("threshold"));
-
-      // initialize LingPipeGeneNamedEntityRecognizer
-      ner = new LingPipeGeneNamedEntityRecognizer(model, MAX_N_BEST_CHUNKS, threshold);
+        // initialize LingPipeGeneNamedEntityRecognizer, use ConfidenceChunker
+        ner = new LingPipeGeneNamedEntityRecognizer(model, MAX_N_BEST_CHUNKS, threshold);
+      } else {
+        // initialize LingPipeGeneNamedEntityRecognizer, use First-BestChunker
+        ner = new LingPipeGeneNamedEntityRecognizer(model);
+      }
     } catch (ResourceAccessException e) {
       // TODO Auto-generated catch block
       System.out.println("Failed to load Model");

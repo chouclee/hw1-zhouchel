@@ -29,12 +29,12 @@ public class StringMapResource_impl implements StringMapResource, SharedResource
       // read each line
       BufferedReader reader = new BufferedReader(new InputStreamReader(inStr));
       String line;
-      while ((line = reader.readLine()) != null) {
+      while ((line = reader.readLine()) != null && line != "") {
         // slit the string use regex expression
         // all pairs follow "key=value" in resource file
         String[] splited = line.split("=");
-        String key = splited[0];
-        String val = splited[1];
+        String key = splited[0].trim();
+        String val = splited[1].trim();
         mMap.put(key, val);
       }
     } catch (IOException e) {
