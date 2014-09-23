@@ -13,7 +13,7 @@ import org.apache.uima.util.FileUtils;
 import org.apache.uima.util.Progress;
 
 /**
- * This CollectionReader will read document line by line
+ * This CollectionReader will read document line by line.
  * @author zhouchel
  * 
  * @see org.apache.uima.collection.CollectionReader_ImplBase#initialize()
@@ -37,7 +37,7 @@ public class TextCollectionReader extends CollectionReader_ImplBase {
 
   @Override
   /**
-   * Get next line of the document, find the first occurrence of white space, set <br>
+   * Get next line of the document, find the first occurrence of white space, set 
    * the left part of this white space as sentence ID, the right part as sentence text.
    * 
    * @see org.apache.uima.collection.CollectionReader#getNext(org.apache.uima.cas.CAS)

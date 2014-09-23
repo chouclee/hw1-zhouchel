@@ -14,7 +14,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceProcessException;
 
 /**
- * GeneTag CAS Consumer that writes all extracted Gene Mention results into a text. 
+ * GeneTag CAS Consumer that writes all extracted Gene Mention results into a text.<br>
  * This CAS Consumer takes one parameter:
  * <ul>
  * <li><code>OutputFile</code> - path to which output file will be written</li>
@@ -52,9 +52,9 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
 
   @Override
   /**
-   * Processes the CasContainer which was populated by the TextAnalysisEngines. <br>
-   * In this case, the Gene annotation was extracted first. Begin and end positions<br>
-   * were updated with calculated whitespace-excluded offsets. Sentence ID, gene name,<br>
+   * Processes the CasContainer which was populated by the TextAnalysisEngines.<br>
+   * In this case, the Gene annotation was extracted first. Begin and end positions
+   * were updated with calculated whitespace-excluded offsets. Sentence ID, gene name, 
    * begin and end positions were written into output file .
    * 
    * @param aCAS

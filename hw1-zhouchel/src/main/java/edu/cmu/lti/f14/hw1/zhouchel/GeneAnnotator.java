@@ -17,8 +17,8 @@ import org.apache.uima.resource.ResourceInitializationException;
  */
 public class GeneAnnotator extends JCasAnnotator_ImplBase {
   /**
-   * Use <br>
-   * {@link edu.cmu.lti.f14.hw1.zhouchel.PosTagNamedEntityRecognizer#getGeneSpans(String)}<br>
+   * Use
+   * {@link edu.cmu.lti.f14.hw1.zhouchel.PosTagNamedEntityRecognizer#getGeneSpans(String)}
    * to detect Gene named, then updated JCas
    * 
    * @param aJCas

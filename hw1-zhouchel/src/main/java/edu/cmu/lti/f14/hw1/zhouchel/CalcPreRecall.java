@@ -79,8 +79,7 @@ public class CalcPreRecall {
   }
 
   /**
-   * Calculate precision, which equals to true positive in predicted <br>
-   * results over predicated results
+   * Calculate precision, which equals to true positive in predicted results over predicated results
    * 
    * @return Precision of this prediction
    */
@@ -89,8 +88,7 @@ public class CalcPreRecall {
   }
 
   /**
-   * Calculate recall, which equals to true positive in predicted results<br>
-   * over standard results
+   * Calculate recall, which equals to true positive in predicted results over standard results
    * 
    * @return Recall of this prediction
    */

@@ -24,7 +24,7 @@ public class GeneAnnotatorWithLingPipe extends JCasAnnotator_ImplBase {
 
   @Override
   /**
-   * Provides access to external resources (other than the CAS)
+   * Provides access to external resources (other than the CAS)<br>
    * Load parameters configuration from file paramConfig
    * 
    * @param aContext
@@ -58,7 +58,7 @@ public class GeneAnnotatorWithLingPipe extends JCasAnnotator_ImplBase {
   }
 
   /**
-   * Use {@link edu.cmu.lti.f14.hw1.zhouchel.LingPipeGeneNamedEntityRecognizer#chunk(String)}<br>
+   * Use {@link edu.cmu.lti.f14.hw1.zhouchel.LingPipeGeneNamedEntityRecognizer#chunk(String)}
    * to detect Gene named, then updated JCas
    * 
    * @param aJCas

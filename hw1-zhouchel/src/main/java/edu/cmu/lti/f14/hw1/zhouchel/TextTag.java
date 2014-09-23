@@ -12,7 +12,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 /** extract sentence from input file
  * Updated by JCasGen Mon Sep 22 01:22:41 EDT 2014
- * XML source: /home/happyuser/git/hw1-zhouchel/hw1-zhouchel/src/main/resources/typeSystemDescriptor.xml
+ * XML source: src/main/resources/typeSystemDescriptor.xml
  * @generated */
 public class TextTag extends Annotation {
   /** @generated

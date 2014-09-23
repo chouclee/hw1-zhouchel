@@ -14,8 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Statistical Gene Named Entity Recognizer using LingPipe toolkit
- * This recognizer support two chunking methods:
+ * Statistical Gene Named Entity Recognizer using LingPipe toolkit.<br>
+ * This recognizer support two chunking methods:<br>
  * First-Best Named Entity Chunking and N-Best Named Entity Chunking
  * 
  * @author zhouchel
@@ -35,7 +35,7 @@ public class LingPipeGeneNamedEntityRecognizer {
   private ClassLoader loader = LingPipeGeneNamedEntityRecognizer.class.getClassLoader();
 
   /**
-   * Constructor for LingPipeGeneNamedEntityRecognizer using First-Best Chunker
+   * Constructor for LingPipeGeneNamedEntityRecognizer using First-Best Chunker.
    * 
    * @param modelFile
    *          file name of the model
@@ -60,7 +60,7 @@ public class LingPipeGeneNamedEntityRecognizer {
   }
 
   /**
-   * Constructor for LingPipeGeneNamedEntityRecognizer using ConfidenceChunker 
+   * Constructor for LingPipeGeneNamedEntityRecognizer using ConfidenceChunker. 
    * 
    * @param modelFile
    *          file name of the model
@@ -93,10 +93,10 @@ public class LingPipeGeneNamedEntityRecognizer {
   
   /**
    * Chuck String into Gene name chunks.
-   * This method can be used for both First-BestChunker and ConfidenceChunker
-   * Call {@link com.aliasi.chunk.Chunker#chunk(CharSequence)} for First-BestChunker
-   * Call {@link com.aliasi.chunk.ConfidenceChunker#nBestChunks(char[], int, int, int)}<br>
-   * for ConfidenceChunker
+   * This method can be used for both First-BestChunker and ConfidenceChunker.<br>
+   * Call {@link com.aliasi.chunk.Chunker#chunk(CharSequence)} for First-BestChunker.<br>
+   * Call {@link com.aliasi.chunk.ConfidenceChunker#nBestChunks(char[], int, int, int)}
+   * for ConfidenceChunker.
    * @param text
    *          String to be analyzed by Chunker
    * @return

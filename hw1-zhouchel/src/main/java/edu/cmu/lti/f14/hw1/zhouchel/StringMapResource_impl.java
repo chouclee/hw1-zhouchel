@@ -11,7 +11,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.SharedResourceObject;
 
 /**
- * This class implements the StringMapResource interface
+ * This class implements the StringMapResource interface<br>
  * Store resource's key and value into a hashMap
  * 
  */
