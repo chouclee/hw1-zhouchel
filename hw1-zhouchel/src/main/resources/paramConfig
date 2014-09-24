@@ -1,6 +1,6 @@
-            model = ne-en-bio-genetag.HmmChunker
-MAX_N_BEST_CHUNKS = 15
-        threshold = 0.65
-       N-Best_NER = false
+model = ne-en-bio-genetag.HmmChunker
+MAX_N_BEST_CHUNKS = 60
+threshold = 0.65
+N-Best_NER = true
 Evaluation = true
 Gold_Standard = data/sample.out

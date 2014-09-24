@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 import org.apache.uima.cas.CAS;
@@ -33,7 +34,7 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
 
   private BufferedWriter writer;
 
-  private ClassLoader loader = LingPipeGeneNamedEntityRecognizer.class.getClassLoader();
+  private ClassLoader loader = GeneTagCasConsumer.class.getClassLoader();
 
   @Override
   /**
@@ -117,7 +118,7 @@ public class GeneTagCasConsumer extends CasConsumer_ImplBase {
         standard = GeneAnnotatorWithLingPipe.mMap.get("Gold_Standard");
         if (standard == null)
           throw new ResourceProcessException();
-        
+
         URL modelURL = loader.getResource(standard); // get standard output filename
         
         String standardOutput = modelURL.getPath();   // get file path to standard output
